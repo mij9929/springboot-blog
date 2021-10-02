@@ -1,0 +1,27 @@
+1.web server: localhost:8000
+2.client ID: 51dG2ORFZOY6iIKCew3a
+3. Client Secret: gMlxXE76bg
+
+3.login redirect_url (callback 주소) : http://localhost:8000/auth/kakao/callback
+
+4. kakao 동의 구성 : User 오브젝트 : id, username, password, email
+kakao 받을 정보 : profile, email(선택)
+
+5. login 요청 주소: (GEt 방식)
+ https://kauth.kakao.com/oauth/authorize?client_id=51a87c6694757c6580fe1215637a9b21&redirect_uri=http:localhost:8000/auth/kakao/callback}&response_type=code
+
+
+
+6.Token 발급 주소 : (Post 방식)
+https://kauth.kakao.com/oauth/token
+Header : application/x-www-form-urlencoded;charset-utf-8;
+bodyData:
+"grant_type" : "authorization_code",
+"client_id" : "60238d6273f07c2bbd97a009c80e9c7d"
+"redirect_uri" : "http://localhost:8000/auth/kakao/callback"
+"code" : {code}
+
+7. 토큰을 통한 사용자 정보 조회(Post)
+https://kapi.kakao.com/v2/user/me
+Authorization: Bearer {ACCESS_TOKEN}
+Content-type: application/x-www-form-urlencoded;charset=utf-8
